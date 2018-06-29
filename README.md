@@ -1,0 +1,1 @@
+Netguru recruitment task for Junior Node.js Developer
