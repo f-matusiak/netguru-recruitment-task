@@ -1,7 +1,15 @@
 import * as Sequelize from 'sequelize';
 import { sequelizeConfig } from '../constrains';
 
-export const sequelize = new Sequelize(sequelizeConfig);
+let seqParams;
+
+if (process.env.DATABASE_URL) {
+  seqParams = process.env.DATABASE_URL;
+} else {
+  seqParams = sequelizeConfig;
+}
+
+export const sequelize = new Sequelize(seqParams);
 
 import { Comment as CommentModelFunc } from './CommentModel';
 import { Movie as MovieModelFunc } from './MovieModel';

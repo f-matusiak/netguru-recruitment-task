@@ -1,12 +1,12 @@
 export const PORT = process.env.PORT || 3001;
 
 export const sequelizeConfig = {
-  database: process.env.DATABASE_URL ? undefined : 'netguru-task',
+  database: 'netguru-task',
   dialect: 'postgres',
   host: process.env.DATABASE_URL || 'localhost',
   port: 5432,
-  username: process.env.DATABASE_URL ? undefined : 'postgres',
-  password: process.env.DATABASE_URL ? undefined : 'Q@wertyuiop',
+  username: 'postgres',
+  password: 'Q@wertyuiop',
 };
 
 export const sequelizeTestConfig = {
