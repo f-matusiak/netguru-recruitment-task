@@ -13,7 +13,7 @@ describe('Test the "/" path', () => {
 
 describe('Test the "/comments" path', () => {
 
-  beforeAll(db.syncDatabase);
+  beforeAll(db.syncComments);
   // beforeEach(resetDatabase);
 
   describe('GET request', () => {
@@ -47,7 +47,7 @@ describe('Test the "/comments" path', () => {
   });
 
   describe('POST request', () => {
-    beforeAll(db.resetDatabase);
+    beforeAll(db.resetComments);
     test('It should response with success anwser', (done) => {
       return request(app)
         .post('/comments')

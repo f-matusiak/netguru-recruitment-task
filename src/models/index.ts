@@ -11,16 +11,18 @@ export const CommentModel = CommentModelFunc(sequelize, Sequelize);
 // tslint:disable-next-line variable-name
 export const MovieModel = MovieModelFunc(sequelize, Sequelize);
 
-export const resetDatabase = () => {
-  return CommentModel.truncate()
-    .then(() => {
-      MovieModel.truncate();
-    });
+export const resetComments = () => {
+  return CommentModel.truncate();
 };
 
-export const syncDatabase = () => {
-  return CommentModel.sync({ force: true })
-    .then(() => {
-      MovieModel.truncate({ force: true });
-    });
+export const resetMovies = () => {
+  return MovieModel.truncate();
+};
+
+export const syncComments = () => {
+  return CommentModel.sync({ force: true });
+};
+
+export const syncMovies = () => {
+  return MovieModel.truncate({ force: true });
 };
