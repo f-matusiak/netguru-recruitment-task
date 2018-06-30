@@ -75,13 +75,16 @@ describe('Test the "/comments" path', () => {
 });
 
 describe('Test the /movies path', () => {
+
+  beforeAll(db.syncMovies);
+
   describe('GET request', () => {
     test('It should response wiith all movies from database', (done) => {
       return request(app)
         .get('/movies')
         .expect(200)
         .then((res) => {
-          expect(res).toBeInstanceOf(Array);
+          expect(res.body.movies).toBeInstanceOf(Array);
           done();
         });
     });
@@ -106,10 +109,17 @@ describe('Test the /movies path', () => {
         .expect(200);
 
       return await db.MovieModel.findOne({ where: { title: 'The Matrix' } })
-        .then((err, res) => {
-          expect(res).toBe(Object);
+        .then((res) => {
+          expect(res).toBeInstanceOf(Object);
           done();
         });
+    });
+
+    test('It should response with error code 400 for wrong data', (done) => {
+      return request(app)
+        .post('/movies')
+        .send({ wrong: 'data' })
+        .expect(400, done);
     });
   });
 });

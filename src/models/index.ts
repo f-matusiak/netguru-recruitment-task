@@ -24,5 +24,5 @@ export const syncComments = () => {
 };
 
 export const syncMovies = () => {
-  return MovieModel.truncate({ force: true });
+  return MovieModel.sync({ force: true });
 };
