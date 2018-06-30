@@ -4,10 +4,11 @@
   "description": "Node.js recruitment task from netguru",
   "main": "index.js",
   "scripts": {
-    "test": "npm run tsc && jest",
-    "start": "npm run tsc && node .\\build\\server.js",
+    "build": "npm run tslint && npm run tsc",
+    "test": "npm run build && jest",
+    "start": "npm run build && node .\\build\\server.js",
     "tsc": "tsc",
-    "tslint": "tslint"
+    "tslint": "tslint --test"
   },
   "author": "GiFree",
   "license": "MIT",
