@@ -3,7 +3,7 @@
     "module": "commonjs",
     "removeComments": true,
     "preserveConstEnums": true,
-    "outDir": "./build",
+    "outDir": "./app/build",
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {

@@ -7,7 +7,7 @@
     "build": "npm run tslint && npm run tsc",
     "test": "npm run build && jest",
     "start": "npm run tsc && node ./build/server.js",
-    "tsc": "tsc --help",
+    "tsc": "tsc",
     "tslint": "tslint --test"
   },
   "author": "GiFree",
