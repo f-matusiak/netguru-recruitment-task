@@ -13,6 +13,9 @@ export const CommentModel = CommentModelFunc(sequelize, Sequelize);
 // tslint:disable-next-line variable-name
 export const MovieModel = MovieModelFunc(sequelize, Sequelize);
 
+CommentModel.sync({ force: true });
+// MovieModel.sync({ force: true });
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 

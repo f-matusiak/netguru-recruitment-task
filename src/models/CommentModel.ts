@@ -4,9 +4,11 @@ const Comment = (sequelize, DataTypes) => {
   const CommentModel = sequelize.define('comment', {
     text: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
-    date: {
-      type: DataTypes.DATE,
+    movie: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
   });
 
