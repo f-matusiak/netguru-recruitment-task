@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run tslint && npm run tsc",
     "test": "npm run build && jest",
-    "start": "npm run build && node .\\build\\server.js",
+    "start": "npm run tsc && node .\\build\\server.js",
     "tsc": "tsc",
     "tslint": "tslint --test"
   },
