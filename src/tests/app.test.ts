@@ -76,10 +76,40 @@ describe('Test the "/comments" path', () => {
 
 describe('Test the /movies path', () => {
   describe('GET request', () => {
-
+    test('It should response wiith all movies from database', (done) => {
+      return request(app)
+        .get('/movies')
+        .expect(200)
+        .then((res) => {
+          expect(res).toBeInstanceOf(Array);
+          done();
+        });
+    });
   });
 
   describe('POST request', () => {
+    test('It should fetch new movie and show it to us', (done) => {
+      return request(app)
+        .post('/movies')
+        .send({ title: 'The Godfather' })
+        .expect(200)
+        .then((res) => {
+          expect(res.body.movie).toBeInstanceOf(Object);
+          done();
+        });
+    });
 
+    test('It should add fetched movie to database', async (done) => {
+      await request(app)
+        .post('/movies')
+        .send({ title: 'The Matrix' })
+        .expect(200);
+
+      return await db.MovieModel.findOne({ where: { title: 'The Matrix' } })
+        .then((err, res) => {
+          expect(res).toBe(Object);
+          done();
+        });
+    });
   });
 });
