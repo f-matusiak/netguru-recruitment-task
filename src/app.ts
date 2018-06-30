@@ -8,10 +8,6 @@ app.use(bodyParser.json());
 
 app.use(express.static('public'));
 
-app.get('/', (req, res, next) => {
-  res.send('<h1>Hello There :)</h1>');
-});
-
 import { getMovies, postMovies } from './routes/movies';
 app.post('/movies', postMovies);
 app.get('/movies', getMovies);

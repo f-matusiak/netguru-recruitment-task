@@ -35,11 +35,11 @@ export const seedData = {
       text: 'first comment',
     },
     {
-      movie: 'First movie',
+      movie: 'Second movie',
       text: 'second comment',
     },
     {
-      movie: 'First movie',
+      movie: 'Second movie',
       text: 'third comment',
     },
     {
