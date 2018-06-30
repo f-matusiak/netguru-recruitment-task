@@ -1,4 +1,4 @@
-import { CommentModel } from '../app';
+import { CommentModel } from '../models';
 
 export const getComments = (req, res, next) => {
   const query = {

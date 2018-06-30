@@ -1,20 +1,7 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import * as Sequelize from 'sequelize';
-import { sequelizeConfig } from './constrains';
 
 const app = express();
-const sequelize = new Sequelize(sequelizeConfig);
-
-import { Comment as CommentModelFunc } from './models/CommentModel';
-import { Movie as MovieModelFunc } from './models/MovieModel';
-// tslint:disable-next-line variable-name
-export const CommentModel = CommentModelFunc(sequelize, Sequelize);
-// tslint:disable-next-line variable-name
-export const MovieModel = MovieModelFunc(sequelize, Sequelize);
-
-CommentModel.sync({ force: true });
-// MovieModel.sync({ force: true });
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
