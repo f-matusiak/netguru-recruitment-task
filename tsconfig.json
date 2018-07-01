@@ -8,16 +8,17 @@
     "baseUrl": ".",
     "paths": {
       "src/client/*": [
-        "./src/*"
+        "./server_src/*"
       ]
     },
     "pretty": true,
     "target": "ESNext",
   },
   "include": [
-    "src/**/*"
+    "server_src/**/*"
   ],
   "exclude": [
+    "src",
     "node_modules",
     "build"
   ]

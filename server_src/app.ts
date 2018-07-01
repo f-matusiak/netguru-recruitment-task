@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
+import * as path from 'path';
 import * as db from './models';
 
 const app = express();
@@ -7,7 +8,10 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+// app.get('/', (req, res, next) => {
+//   res.sendFile(path.join(__dirname, 'build', 'index.js'));
+// });
 
 import { getMovies, postMovies } from './routes/movies';
 app.post('/movies', postMovies);

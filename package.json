@@ -6,9 +6,13 @@
   "scripts": {
     "build": "npm run tslint && npm run tsc",
     "test": "npm run build && jest",
-    "start": "npm run tsc && node ./app/build/server.js",
+    "prestart": "react-scripts build && npm run tsc && npm run move",
+    "start": "node ./app/build/server.js",
     "tsc": "tsc",
-    "tslint": "tslint --test"
+    "tslint": "tslint --test",
+    "reactbuild": "react-scripts build && npm run move",
+    "reactstart": "react-scripts start",
+    "move": "move ./build ./app/build/public"
   },
   "author": "GiFree",
   "license": "MIT",
@@ -32,6 +36,10 @@
     "node-fetch": "^2.1.2",
     "pg": "7.4.3",
     "pg-hstore": "2.3.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^1.1.4",
     "sequelize": "4.38.0"
   }
 }
