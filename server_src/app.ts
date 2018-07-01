@@ -9,9 +9,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
-// app.get('/', (req, res, next) => {
-//   res.sendFile(path.join(__dirname, 'build', 'index.js'));
-// });
 
 import { getMovies, postMovies } from './routes/movies';
 app.post('/movies', postMovies);
@@ -22,13 +19,19 @@ app.post('/comments', postComments);
 app.get('/comments', getComments);
 
 app.post('/sync', (req, res, next) => {
-  db.syncComments()
-    .then(() => {
-      db.syncMovies()
-        .then(() => {
-          res.status(200).send({ message: 'sucessfully synced database!' });
-        });
-    });
+  if (req.body.table && req.body.table === 'comments') {
+    db.syncComments()
+      .then(() => {
+        res.status(200).send({ message: 'sucessfully synced comments!' });
+      });
+  } else if (req.body.table && req.body.table === 'movies') {
+    db.syncMovies()
+      .then(() => {
+        res.status(200).send({ message: 'sucessfully synced movies!' });
+      });
+  } else {
+    res.status(400).send({ message: 'specify what u want to sync (movies, comments)' });
+  }
 });
 
 app.get('*', (req, res, next) => {
