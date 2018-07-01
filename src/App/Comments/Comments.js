@@ -14,12 +14,13 @@ class Comments extends Component {
   componentWillMount() {
     fetch(`${window.location.origin}/comments`)
       .then((res) => {
-        console.log(res);
         return res.json();
       })
       .then((json) => {
-        console.log(json);
         this.setState({ comments: json.comments });
+      })
+      .catch((err) => {
+        this.setState({ error: err.message });
       })
   }
 
@@ -27,6 +28,9 @@ class Comments extends Component {
     const comments = this.state.comments.map((data) => {
       return <Comment data={data} />
     })
+    if (this.state.error) {
+      comments.unshift(<div className="error">{this.state.error}</div>)
+    }
     return (
       <div className="container">
 
