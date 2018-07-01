@@ -1,13 +1,11 @@
 import { CommentModel } from '../models';
 
 export const getComments = (req, res, next) => {
-  const query = {
-    where: {},
-  };
+  let query;
   if (req.query.id) {
-    query.where = { movie: req.query.id };
+    query = { movie: req.query.id };
   }
-  CommentModel.findAll(query)
+  CommentModel.find(query)
     .then((comments) => {
       res.status(200).send({ comments });
     })

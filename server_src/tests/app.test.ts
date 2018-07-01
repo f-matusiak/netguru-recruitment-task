@@ -3,22 +3,22 @@ import * as request from 'supertest';
 import * as db from '../models';
 import { seedData } from '../constrains';
 
-describe('Test the "/" path', () => {
+describe('Test the "/randompath" path', () => {
   test('It should return 404 error', (done) => {
     return request(app)
-      .get('/')
+      .get('/randompath')
       .expect(404, done);
   });
 });
 
 describe('Test the "/comments" path', () => {
 
-  beforeAll(db.syncComments);
+  beforeAll(db.resetComments);
   // beforeEach(resetDatabase);
 
   describe('GET request', () => {
     beforeAll(async () => {
-      seedData.comments.map(async (data) => {
+      await seedData.comments.map(async (data) => {
         await db.CommentModel.create(data);
       });
     });
@@ -76,10 +76,10 @@ describe('Test the "/comments" path', () => {
 
 describe('Test the /movies path', () => {
 
-  beforeAll(db.syncMovies);
+  beforeAll(db.resetMovies);
 
   describe('GET request', () => {
-    test('It should response wiith all movies from database', (done) => {
+    test('It should response with all movies from database', (done) => {
       return request(app)
         .get('/movies')
         .expect(200)
@@ -108,7 +108,7 @@ describe('Test the /movies path', () => {
         .send({ title: 'The Matrix' })
         .expect(200);
 
-      return await db.MovieModel.findOne({ where: { title: 'The Matrix' } })
+      return await db.MovieModel.findOne({ title: 'The Matrix' })
         .then((res) => {
           expect(res).toBeInstanceOf(Object);
           done();

@@ -3,7 +3,7 @@ import { apiKey } from '../constrains';
 import { MovieModel } from '../models';
 
 export const getMovies = (req, res, next) => {
-  MovieModel.findAll()
+  MovieModel.find()
     .then((data) => {
       res.status(200).send({ movies: data });
     })
@@ -13,7 +13,6 @@ export const getMovies = (req, res, next) => {
 };
 
 export const postMovies = (req, res, next) => {
-  console.log(req.body);
   if (Object.keys(req.body).length === 1 && req.body.title) {
     const title = req.body.title.split(' ').join('+');
     nodeFetch(`http://www.omdbapi.com/?apikey=${apiKey}&t=${title}`)

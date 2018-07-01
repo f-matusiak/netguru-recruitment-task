@@ -1,36 +1,22 @@
-import * as Sequelize from 'sequelize';
-import { sequelizeConfig } from '../constrains';
+import * as mongoose from 'mongoose';
+import { mongooseURI } from '../constrains';
 
-let seqParams;
+mongoose.connect(mongooseURI);
 
-if (process.env.DATABASE_URL) {
-  seqParams = process.env.DATABASE_URL;
-} else {
-  seqParams = sequelizeConfig;
-}
+export const Schema = mongoose.Schema;
 
-export const sequelize = new Sequelize(seqParams);
-
-import { Comment as CommentModelFunc } from './CommentModel';
-import { Movie as MovieModelFunc } from './MovieModel';
+import { Comment } from './CommentModel';
+import { Movie } from './MovieModel';
 
 // tslint:disable-next-line variable-name
-export const CommentModel = CommentModelFunc(sequelize, Sequelize);
+export const CommentModel = mongoose.model('comment', Comment);
 // tslint:disable-next-line variable-name
-export const MovieModel = MovieModelFunc(sequelize, Sequelize);
+export const MovieModel = mongoose.model('movie', Movie);
 
 export const resetComments = () => {
-  return CommentModel.truncate();
+  return CommentModel.remove({});
 };
 
 export const resetMovies = () => {
-  return MovieModel.truncate();
-};
-
-export const syncComments = () => {
-  return CommentModel.sync({ force: true });
-};
-
-export const syncMovies = () => {
-  return MovieModel.sync({ force: true });
+  return MovieModel.remove({});
 };

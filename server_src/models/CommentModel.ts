@@ -1,18 +1,15 @@
 /* tslint:disable variable-name */
+import { Schema } from './index';
 
-const Comment = (sequelize, DataTypes) => {
-  const CommentModel = sequelize.define('comment', {
-    text: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    movie: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-  });
-
-  return CommentModel;
-};
+const Comment = new Schema({
+  text: {
+    type: String,
+    allowNull: false,
+  },
+  movie: {
+    type: String,
+    allowNull: false,
+  },
+});
 
 export { Comment };
