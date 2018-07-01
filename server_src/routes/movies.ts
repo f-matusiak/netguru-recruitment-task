@@ -26,10 +26,12 @@ export const postMovies = (req, res, next) => {
           actors: data.Actors,
           poster: data.Poster,
           imdbID: data.imdbID,
-          ratings: {
-            source: data.Ratings.Source,
-            value: data.Ratings.Value,
-          },
+          ratings: data.Ratings.map((rating) => {
+            return {
+              source: rating.Source,
+              value: rating.Value,
+            };
+          }),
         };
         MovieModel.create(movie)
           .then(() => {
