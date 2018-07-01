@@ -12,7 +12,7 @@
     "tslint": "tslint --test",
     "reactbuild": "react-scripts build && npm run move",
     "reactstart": "react-scripts start",
-    "move": "move ./build ./app/build/public"
+    "move": "mv ./build ./app/build/public"
   },
   "author": "GiFree",
   "license": "MIT",
