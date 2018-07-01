@@ -28,12 +28,13 @@ class Comments extends Component {
     const comments = this.state.comments.map((data) => {
       return <Comment data={data} />
     })
+    let error;
     if (this.state.error) {
-      comments.unshift(<div className="error">{this.state.error}</div>)
+      error = <div className="error">{this.state.error}</div>;
     }
     return (
       <div className="container">
-
+        {error}
         {comments}
       </div>
     )

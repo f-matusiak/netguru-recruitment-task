@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 
 class Comment extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-  redner() {
+  render() {
     return (
       <div className="comment">
         <p className="text">{this.props.data.text}</p>

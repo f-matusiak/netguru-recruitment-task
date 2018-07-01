@@ -3,6 +3,10 @@ import Ratings from './Ratings';
 
 class Movie extends Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     const movie = this.props.data;
     return (

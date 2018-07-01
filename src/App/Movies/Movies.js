@@ -13,11 +13,9 @@ class Movies extends Component {
   componentWillMount() {
     fetch(`${window.location.origin}/movies`)
       .then((res) => {
-        console.log(res);
         return res.json();
       })
       .then((json) => {
-        console.log(json);
         this.setState({ movies: json.movies });
       })
   }
