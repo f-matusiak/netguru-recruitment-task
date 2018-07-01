@@ -33,7 +33,7 @@ app.post('/sync', (req, res, next) => {
     db.sequelize.sync({ force: true })
       .then(() => {
         res.status(200).send({ message: 'sucessfully synced sequelize!' });
-      })
+      });
   } else {
     res.status(400).send({ message: 'specify what u want to sync (movies, comments)' });
   }

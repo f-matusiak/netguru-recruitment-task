@@ -25,6 +25,7 @@ class Comments extends Component {
     })
     return (
       <div className="container">
+
         {comments}
       </div>
     )
