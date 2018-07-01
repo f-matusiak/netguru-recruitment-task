@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
-import Home from './Home/Home';
+import Search from './Search/Search';
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
 import Movies from './Movies/Movies';
@@ -13,9 +13,9 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/movies" component={Movies} />
-          <Route path="/comments" component={Comments} />
+          <Route exact path="/" component={Movies} />
+          <Route path="/search" component={Search} />
+          <Route path="/listcom" component={Comments} />
         </Switch>
         <Footer />
       </div>

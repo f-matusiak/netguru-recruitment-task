@@ -1,0 +1,20 @@
+.error-bar {
+  position: fixed;
+  top: 60px;
+  left: 10%;
+  width: 80%;
+  color: black;
+  background: #FF9494;
+  text-align: center;
+  border: 5px solid #FF9494;
+  border-radius: 3px;
+}
+
+.error-bar .button {
+  display: block;
+  float: right;
+}
+
+.error-bar img {
+  width: 20px;
+}

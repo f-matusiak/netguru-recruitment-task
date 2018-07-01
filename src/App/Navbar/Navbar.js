@@ -8,12 +8,12 @@ class Navbar extends Component {
     return (
       <div className="navbar">
         <Link to="/" className="button btn-1">
-          Home
-        </Link>
-        <Link to="/movies" className="button btn-2">
           Movies
         </Link>
-        <Link to="/comments" className="button btn-3">
+        <Link to="/search" className="button btn-2">
+          Search
+        </Link>
+        <Link to="/listcom" className="button btn-3">
           Comments
         </Link>
 

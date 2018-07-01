@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Comment from './Comment';
-
+import ErrorBar from '../ErrorBar';
 class Comments extends Component {
   constructor() {
     super();
@@ -30,7 +30,7 @@ class Comments extends Component {
     })
     let error;
     if (this.state.error) {
-      error = <div className="error">{this.state.error}</div>;
+      error = <ErrorBar message={this.state.error} />
     }
     return (
       <div className="container">
