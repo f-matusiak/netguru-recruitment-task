@@ -1,6 +1,11 @@
 /* tslint:disable variable-name */
 import { Schema } from './index';
 
+const Rating = new Schema({
+  source: String,
+  value: String,
+});
+
 const Movie = new Schema({
   title: String,
   year: String,
@@ -9,12 +14,7 @@ const Movie = new Schema({
   actors: String,
   poster: String,
   imdbID: String,
-  ratings: [
-    {
-      source: String,
-      value: String,
-    },
-  ],
+  ratings: [Rating],
 });
 
 export { Movie };

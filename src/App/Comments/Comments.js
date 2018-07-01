@@ -6,15 +6,19 @@ class Comments extends Component {
     super();
 
     this.state = {
-      movies: []
+      comments: []
     };
 
   }
 
   componentWillMount() {
     fetch(`${window.location.origin}/comments`)
-      .then(res => res.json())
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
       .then((json) => {
+        console.log(json);
         this.setState({ comments: json.comments });
       })
   }

@@ -5,7 +5,8 @@ class Comment extends Component {
   redner() {
     return (
       <div className="comment">
-        {this.props.text}
+        <p className="text">{this.props.data.text}</p>
+        <p className="movie">{this.props.data.movie}</p>
       </div>
     )
   }
