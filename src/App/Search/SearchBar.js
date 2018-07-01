@@ -11,10 +11,11 @@ class SearchBar extends Component {
 
 
   handleClick(e) {
-    console.log(e.target);
+    const value = e.target.parentElement.firstChild.value;
+    this.props.handler(value);
   }
 
-  redner() {
+  render() {
     return (
       <div className="search-bar">
         <input type="text" />

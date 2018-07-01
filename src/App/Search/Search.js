@@ -7,7 +7,6 @@ class Search extends Component {
   constructor() {
     super();
     this.state = {
-      movie: {}
     }
 
     this.handleSearch = this.handleSearch.bind(this);
@@ -16,6 +15,9 @@ class Search extends Component {
   handleSearch(title) {
     fetch(`${window.location.origin}/movies`, {
       method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
       body: JSON.stringify({ title: title })
     })
       .then((res) => {

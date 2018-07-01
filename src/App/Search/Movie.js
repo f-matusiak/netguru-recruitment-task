@@ -4,6 +4,13 @@ import Ratings from './Ratings';
 class Movie extends Component {
 
   render() {
+    if (this.props.data === undefined) {
+      return (
+        <div>
+          Search for a Movie to add it to database
+        </div>
+      )
+    }
     const movie = this.props.data;
     return (
       <div className="movie">
