@@ -29,6 +29,11 @@ app.post('/sync', (req, res, next) => {
       .then(() => {
         res.status(200).send({ message: 'sucessfully synced movies!' });
       });
+  } else if (req.body.table && req.body.table === 'whole') {
+    db.sequelize.sync({ force: true })
+      .then(() => {
+        res.status(200).send({ message: 'sucessfully synced sequelize!' });
+      })
   } else {
     res.status(400).send({ message: 'specify what u want to sync (movies, comments)' });
   }
