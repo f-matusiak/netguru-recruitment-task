@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NewComment from './NewComment';
 
 class ListComment extends Component {
   constructor(props) {
@@ -22,9 +23,13 @@ class ListComment extends Component {
       .then((comments) => {
         this.setState({ comments });
       })
+      .catch((err) => {
+        this.setState({ error: err.message });
+        console.log(err);
+      })
   }
 
-  redner() {
+  render() {
     const comments = this.state.comments.map((comment) => {
       return (
         <div className="comment">
@@ -40,3 +45,5 @@ class ListComment extends Component {
     )
   }
 }
+
+export default ListComment;

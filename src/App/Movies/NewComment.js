@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import ErrorBar from '../ErrorBar';
 
-class ListComment extends Component {
-  constructor(props) {
-    super(props);
-  }
+class NewComment extends Component {
+
 
   handleClick(e) {
     const text = e.target.parentElement.firtsChild.value;
@@ -16,14 +14,14 @@ class ListComment extends Component {
       body: JSON.stringify({ text, movie: this.props.movieID })
     })
       .then((res) => {
-        addComment({ text, movie: movieID });
+        this.props.addComment({ text, movie: this.props.movieID });
       })
       .catch((err) => {
         this.setState({ error: err.message });
       })
   }
 
-  redner() {
+  render() {
     let error;
     if (this.state.error) {
       error = <ErrorBar message={this.state.error} />;
@@ -37,3 +35,5 @@ class ListComment extends Component {
     )
   }
 }
+
+export default NewComment;

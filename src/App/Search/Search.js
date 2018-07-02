@@ -20,8 +20,10 @@ class Search extends Component {
       },
       body: JSON.stringify({ title: title })
     })
+      .then(res => res.json())
       .then((res) => {
         console.log(res);
+        this.setState({ movie: res.movie });
       })
       .catch((err) => {
         console.log(err);

@@ -1,21 +1,38 @@
 import React, { Component } from 'react';
-import Ratings from './Ratings';
+import FullMovie from './FullMovie';
 
 class Movie extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      fullInfo: false
+    }
+
+    this.openMovie = this.openMovie.bind(this);
+  }
+
+  openMovie(e) {
+
+  }
+
   render() {
-    const movie = this.props.data;
+    const movie = this.props.movie;
+    let popup;
+    if (this.state.fullInfo) {
+      popup = (
+        <FullMovie movie={this.state.movie} close={this.closeMovie} />
+      )
+    }
     return (
-      <div className="movie">
-        <div className="title">{movie.title} <p>({movie.year})</p></div>
+      <div className="movie" onClick={this.openMovie}>
         <img src={movie.poster} alt="No poster for this Movie" />
-        <ul>
-          <li>Director: {movie.director}</li>
-          <li>Actors: {movie.actors}</li>
-          <li>Ratings: <Ratings data={movie.ratings} /></li>
-        </ul>
+        <div className="title">{movie.title}</div>
+        {popup}
       </div>
     )
+
   }
 }
 
