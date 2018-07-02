@@ -13,7 +13,7 @@ class Movie extends Component {
     }
     const movie = this.props.data;
     return (
-      <div className="movie">
+      <div className="movie-search-box">
         <div className="title">{movie.Title} <p>({movie.Year})</p></div>
         <img src={movie.Poster} alt="No poster for this Movie" />
         <ul>

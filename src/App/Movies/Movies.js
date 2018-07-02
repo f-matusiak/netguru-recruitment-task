@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Movie from './Movie';
 import ErrorBar from '../ErrorBar';
+import './Movies.css';
+
 class Movies extends Component {
 
   constructor() {
@@ -31,18 +33,17 @@ class Movies extends Component {
     }
     if (this.state.movies.length > 0) {
       const movies = this.state.movies.map((movie) => {
-        console.log(movie);
         return <Movie movie={movie} />
       })
       return (
-        <div className="movie-container">
+        <div className="container">
           {error}
           {movies}
         </div>
       )
     } else {
       return (
-        <div className="movie-container">
+        <div className="container">
           No Movies available
         </div>
       )

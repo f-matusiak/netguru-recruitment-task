@@ -15,9 +15,7 @@ export const getComments = (req, res, next) => {
 };
 
 export const postComments = (req, res, next) => {
-
   if (req.body.movie && req.body.text) {
-    console.log(req.body);
     const data = {
       text: req.body.text,
       movie: req.body.movie,

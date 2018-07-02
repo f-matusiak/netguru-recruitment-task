@@ -1,10 +1,15 @@
 .container {
+  position: fixed;
   width: 50%;
   background: #ccc;
-  border: 5px #ccc solid;
+  border: 5px solid #ccc;
   border-radius: 5px;
   margin: auto;
-  margin-top: 80px;
   align-content: center;
   text-align: center;
+  left: 15%;
+  width: 70%;
+  height: 80%;
+  top: 70px;
+  overflow: auto;
 }

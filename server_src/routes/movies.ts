@@ -1,6 +1,6 @@
 import nodeFetch from 'node-fetch';
 import { apiKey } from '../constrains';
-import { MovieModel } from '../models';
+import { MovieModel, addMovie } from '../models';
 
 export const getMovies = (req, res, next) => {
   MovieModel.find()
@@ -14,10 +14,13 @@ export const getMovies = (req, res, next) => {
 
 export const postMovies = (req, res, next) => {
   if (Object.keys(req.body).length === 1 && req.body.title) {
-    const title = req.body.title.split(' ').join('+');
+    const title = encodeURI(req.body.title);
     nodeFetch(`http://www.omdbapi.com/?apikey=${apiKey}&t=${title}`)
       .then(data => data.json())
       .then((data) => {
+        if (data.Error) {
+          return res.status(500).send({ message: data.Error });
+        }
         const movie = {
           title: data.Title,
           year: data.Year,
@@ -33,7 +36,7 @@ export const postMovies = (req, res, next) => {
             };
           }),
         };
-        MovieModel.create(movie)
+        addMovie(movie)
           .then(() => {
             res.status(200).send({ movie: data });
           })

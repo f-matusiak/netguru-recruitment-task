@@ -8,3 +8,9 @@
   text-align: center;
 
 }
+
+.movie-search-box {
+  float: left;
+    width: 70%;
+    margin-left: 15%;
+}

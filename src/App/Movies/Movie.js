@@ -7,29 +7,31 @@ class Movie extends Component {
     super(props);
 
     this.state = {
-      fullInfo: false
+      display: 'none'
     }
 
     this.openMovie = this.openMovie.bind(this);
+    this.closeMovie = this.closeMovie.bind(this);
   }
 
-  openMovie(e) {
+  openMovie() {
+    this.setState({ display: 'block' });
+  }
 
+  closeMovie() {
+    this.setState({ display: 'none' });
   }
 
   render() {
     const movie = this.props.movie;
-    let popup;
-    if (this.state.fullInfo) {
-      popup = (
-        <FullMovie movie={this.state.movie} close={this.closeMovie} />
-      )
-    }
+
     return (
-      <div className="movie" onClick={this.openMovie}>
-        <img src={movie.poster} alt="No poster for this Movie" />
-        <div className="title">{movie.title}</div>
-        {popup}
+      <div className="movie" >
+        <div onClick={this.openMovie}>
+          <img src={movie.poster} alt="No poster for this Movie" />
+          <div className="title">{movie.title}</div>
+        </div>
+        <FullMovie movie={movie} style={{ display: this.state.display }} close={this.closeMovie} />
       </div>
     )
 

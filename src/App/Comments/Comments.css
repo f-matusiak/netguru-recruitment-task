@@ -1,0 +1,14 @@
+.comment-box {
+  float: left;
+  margin-left: 5%;
+  width: 90%;
+}
+
+.comment-text {
+word-wrap: break-word;
+}
+
+.comment-movie {
+  float: right;
+  font-size: 12px;
+}
