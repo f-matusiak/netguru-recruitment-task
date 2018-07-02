@@ -35,7 +35,7 @@ app.get('/comments', getComments);
 // });
 
 app.get('*', (req, res, next) => {
-  res.status(404).send('Error: Not Found');
+  res.status(200).redirect('/');
 });
 
 export default app;

@@ -4,10 +4,10 @@ import * as db from '../models';
 import { seedData } from '../constrains';
 
 describe('Test the "/randompath" path', () => {
-  test('It should return 404 error', (done) => {
+  test('It should redirect to / and return 200 code', (done) => {
     return request(app)
       .get('/randompath')
-      .expect(404, done);
+      .expect(200, done);
   });
 });
 
