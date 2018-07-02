@@ -10,7 +10,7 @@ class FullMovie extends Component {
       <div className="popup" style={this.props.style}>
         <div className="full-movie">
           <div onClick={this.props.close} className="close">
-            <img src="./cancel.svg" alt="Close" />
+            <img src="./cancel_white.svg" alt="Close" />
           </div>
           <div className="poster">
             <img src={movie.poster} alt="No poster available" />

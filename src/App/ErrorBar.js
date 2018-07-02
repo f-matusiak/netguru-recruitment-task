@@ -21,7 +21,7 @@ class ErrorBar extends Component {
       <div className="error-bar" style={{ display: this.state.display }}>
         {this.props.message}
         <div onClick={this.handleClose}>
-          <img src="./cancel.svg" alt="Cancel" />
+          <img src="./cancel_black.svg" alt="Cancel" />
         </div>
       </div>
     )
