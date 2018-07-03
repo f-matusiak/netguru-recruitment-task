@@ -19,7 +19,7 @@ export const postMovies = (req, res, next) => {
       .then(data => data.json())
       .then((data) => {
         if (data.Error) {
-          return res.status(500).send({ message: data.Error });
+          return res.status(200).send({ message: data.Error });
         }
         const movie = {
           title: data.Title,

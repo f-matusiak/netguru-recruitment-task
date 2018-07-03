@@ -10,6 +10,7 @@ class Search extends Component {
     }
 
     this.handleSearch = this.handleSearch.bind(this);
+    this.clearError = this.clearError.bind(this);
   }
 
   handleSearch(title) {
@@ -21,6 +22,9 @@ class Search extends Component {
       body: JSON.stringify({ title: title })
     }).then(res => res.json())
       .then((res) => {
+        if (res.message) {
+          return this.setState({ error: res.message });
+        }
         this.setState({ movie: res.movie });
       })
       .catch((err) => {
@@ -29,10 +33,14 @@ class Search extends Component {
       })
   }
 
+  clearError() {
+    this.setState({ error: null });
+  }
+
   render() {
     let errorBar;
     if (this.state.error) {
-      errorBar = <ErrorBar message={this.state.error} />
+      errorBar = <ErrorBar message={this.state.error} clearError={this.clearError} />
     }
     return (
       <div className="container">

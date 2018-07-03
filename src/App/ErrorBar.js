@@ -14,6 +14,9 @@ class ErrorBar extends Component {
 
   handleClose() {
     this.setState({ display: 'none' });
+    if (this.props.clearError) {
+      this.props.clearError();
+    }
   }
 
   render() {
